@@ -9,12 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 441825891b3846d4ba4284194b000237, type: 3}
-  m_Name: Helmet
+  m_Name: Default Hair
   m_EditorClassIdentifier: 
-  name: Helmet
-  icon: {fileID: 21300000, guid: e047bd8cacdb50a4c8e2da2c49101fd2, type: 3}
-  isDefaultItem: 0
+  name: Default Hair
+  icon: {fileID: 0}
+  isDefaultItem: 1
   equipmentSlot: 0
-  mesh: {fileID: 137561518312661420, guid: bad0d11f3dacc4c4b80f8765b0c901df, type: 2}
-  armorModifier: 2
-  damageModifer: 1
+  mesh: {fileID: 137176577783947704, guid: ee3e8dc5fd1b9844a92087df02610c89, type: 2}
+  coveredMeshRegions: 
+  armorModifier: 0
+  damageModifer: 0
