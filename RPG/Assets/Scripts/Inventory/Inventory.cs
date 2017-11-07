@@ -1,56 +1,51 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
-{
-    #region Singleton
+public class Inventory : MonoBehaviour {
 
-    public static Inventory instance;
+	#region Singleton
 
-    private void Awake()
-    {
-        if (instance != null)
-        {
-            Debug.Log("More than one instance of Iventory found!");
-            return;
-        }
-        instance = this;
-    }
+	public static Inventory instance;
 
-    #endregion
+	void Awake ()
+	{
+		instance = this;
+	}
 
-    public delegate void OnItemChanged();
-    public OnItemChanged onItemChangedCallback;
+	#endregion
 
-    public int space = 20;
+	public delegate void OnItemChanged();
+	public OnItemChanged onItemChangedCallback;
 
-    public List<Item> items = new List<Item>();
+	public int space = 10;	// Amount of item spaces
 
-    public bool Add(Item item)
-    {
-        if (!item.isDefaultItem)
-        {
-            if (items.Count >= space)
-            {
-                Debug.Log("Not enough room");
-                return false;
-            }
+	// Our current list of items in the inventory
+	public List<Item> items = new List<Item>();
 
-            items.Add(item);
+	// Add a new item if enough room
+	public void Add (Item item)
+	{
+		if (item.showInInventory) {
+			if (items.Count >= space) {
+				Debug.Log ("Not enough room.");
+				return;
+			}
 
-            if (onItemChangedCallback != null)
-                onItemChangedCallback.Invoke();
-        }
+			items.Add (item);
 
-        return true;
-    }
+			if (onItemChangedCallback != null)
+				onItemChangedCallback.Invoke ();
+		}
+	}
 
-    public void Remove(Item item)
-    {
-        items.Remove(item);
+	// Remove an item
+	public void Remove (Item item)
+	{
+		items.Remove(item);
 
-        if (onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
-    }
+		if (onItemChangedCallback != null)
+			onItemChangedCallback.Invoke();
+	}
+
 }

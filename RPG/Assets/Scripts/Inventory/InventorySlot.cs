@@ -1,41 +1,50 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour
-{
-    public Image icon;
-    public Button removeButton;
+/* Sits on all InventorySlots. */
 
-    Item item;
+public class InventorySlot : MonoBehaviour {
 
-    public void AddItem (Item newItem)
-    {
-        item = newItem;
+	public Image icon;
+	public Button removeButton;
 
-        icon.sprite = item.icon;
-        icon.enabled = true;
-        removeButton.interactable = true;
-    }
+	Item item;	// Current item in the slot
 
-    public void ClearSlot()
-    {
-        item = null;
+	// Add item to the slot
+	public void AddItem (Item newItem)
+	{
+		item = newItem;
 
-        icon.sprite = null;
-        icon.enabled = false;
-        removeButton.interactable = false;
-    }
+		icon.sprite = item.icon;
+		icon.enabled = true;
+		removeButton.interactable = true;
+	}
 
-    public void UseItem()
-    {
-        if (item != null)
-        {
-            item.Use();
-        }
-    }
+	// Clear the slot
+	public void ClearSlot ()
+	{
+		item = null;
 
-    public void OnRemoveButton()
-    {
-        Inventory.instance.Remove(item);
-    }
+		icon.sprite = null;
+		icon.enabled = false;
+		removeButton.interactable = false;
+	}
+
+	// If the remove button is pressed, this function will be called.
+	public void RemoveItemFromInventory ()
+	{
+		Inventory.instance.Remove(item);
+	}
+
+	// Use the item
+	public void UseItem ()
+	{
+		if (item != null)
+		{
+			item.Use();
+		}
+	}
+
 }

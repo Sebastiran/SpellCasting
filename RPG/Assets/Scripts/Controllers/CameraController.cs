@@ -1,35 +1,47 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
-    public Transform target;
+/* Makes the camera follow the player */
 
-    public Vector3 offset;
-    public float zoomSpeed = 4f;
-    public float minZoom = 5f;
-    public float maxZoom = 15f;
+public class CameraController : MonoBehaviour {
 
-    public float pitch = 2f;
+	public Transform target;
 
-    public float yawSpeed = 100f;
+	public Vector3 offset;
+	public float smoothSpeed = 2f;
 
-    private float currentZoom = 10f;
+	public float currentZoom = 1f;
+	public float maxZoom = 3f;
+	public float minZoom = .3f;
+	public float yawSpeed = 70;
+	public float zoomSensitivity = .7f;
+	float dst;
 
-    private float currentYaw = 0f;
+	float zoomSmoothV;
+	float targetZoom;
 
-    private void Update()
-    {
-        currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+	void Start() {
+		dst = offset.magnitude;
+		transform.LookAt (target);
+		targetZoom = currentZoom;
+	}
 
-        currentYaw -= Input.GetAxis("Horizontal") * yawSpeed * Time.deltaTime;
-    }
+	void Update ()
+	{
+		float scroll = Input.GetAxisRaw("Mouse ScrollWheel") * zoomSensitivity;
 
-    private void LateUpdate()
-    {
-        transform.position = target.position - offset * currentZoom;
-        transform.LookAt(target.position + Vector3.up * pitch);
+		if (scroll != 0f)
+		{
+			targetZoom = Mathf.Clamp(targetZoom - scroll, minZoom, maxZoom);
+		}
+		currentZoom = Mathf.SmoothDamp (currentZoom, targetZoom, ref zoomSmoothV, .15f);
+	}
 
-        transform.RotateAround(target.position, Vector3.up, currentYaw);
-    }
+	void LateUpdate () {
+		transform.position = target.position - transform.forward * dst * currentZoom;
+		transform.LookAt(target.position);
+
+		float yawInput = Input.GetAxisRaw ("Horizontal");
+		transform.RotateAround (target.position, Vector3.up, -yawInput * yawSpeed * Time.deltaTime);
+	}
+
 }

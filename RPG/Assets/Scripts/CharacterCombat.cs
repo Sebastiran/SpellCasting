@@ -1,46 +1,61 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* This resorts combat for all characters. */
+
 [RequireComponent(typeof(CharacterStats))]
-public class CharacterCombat : MonoBehaviour
-{
-    public float attackSpeed = 1f;
-    private float attackCooldown = 0f;
+public class CharacterCombat : MonoBehaviour {
 
-    public float attackDelay = .6f;
+	public float attackRate = 1f;
+	private float attackCountdown = 0f;
 
-    public event System.Action OnAttack;
+	public event System.Action OnAttack;
 
-    CharacterStats myStats;
+	public Transform healthBarPos;
 
-    private void Start()
-    {
-        myStats = GetComponent<CharacterStats>();
-    }
+	CharacterStats myStats;
+	CharacterStats enemyStats;
 
-    private void Update()
-    {
-        attackCooldown -= Time.deltaTime;
-    }
 
-    public void Attack (CharacterStats targetStats)
-    {
-        if (attackCooldown <= 0f)
-        {
-            StartCoroutine(DoDamage(targetStats, attackDelay));
+	void Start ()
+	{
+		myStats = GetComponent<CharacterStats>();
+		HealthUIManager.instance.Create (healthBarPos, myStats);
+	}
 
-            if (OnAttack != null)
-                OnAttack();
+	void Update ()
+	{
+		attackCountdown -= Time.deltaTime;
+	}
 
-            attackCooldown = 1f / attackSpeed;
-        }
-    }
+	public void Attack (CharacterStats enemyStats)
+	{
+		if (attackCountdown <= 0f)
+		{
+			this.enemyStats = enemyStats;
+			attackCountdown = 1f / attackRate;
 
-    IEnumerator DoDamage (CharacterStats stats, float delay)
-    {
-        yield return new WaitForSeconds(delay);
+			StartCoroutine(DoDamage(enemyStats,.6f));
 
-        stats.TakeDamage(myStats.damage.GetValue());
-    }
+			if (OnAttack != null) {
+				OnAttack ();
+			}
+		}
+	}
+
+
+	IEnumerator DoDamage(CharacterStats stats, float delay) {
+		print ("Start");
+		yield return new WaitForSeconds (delay);
+
+		Debug.Log (transform.name + " swings for " + myStats.damage.GetValue () + " damage");
+		enemyStats.TakeDamage (myStats.damage.GetValue ());
+
+
+
+
+	}
+
+
 }

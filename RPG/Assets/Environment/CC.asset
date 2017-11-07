@@ -120,7 +120,7 @@ MonoBehaviour:
         neutralWhiteLevel: 6.68
         neutralWhiteClip: 10
       basic:
-        postExposure: 0.65
+        postExposure: 0.55
         temperature: -6.9
         tint: 2
         hueShift: 0

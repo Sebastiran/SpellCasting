@@ -1,43 +1,54 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class CharacterStats : MonoBehaviour
-{
-    public int maxHealth = 100;
-    public int currentHealth { get; private set; }
+/* Contains all the stats for a character. */
 
-    public Stat damage;
-    public Stat armour;
+public class CharacterStats : MonoBehaviour {
 
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-    }
+	public Stat maxHealth;			// Maximum amount of health
+	public int currentHealth {get;protected set;}	// Current amount of health
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(10);
-        }
-    }
+	public Stat damage;
+	public Stat armor;
 
-    public void TakeDamage(int damage)
-    {
-        damage -= armour.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+	public event System.Action OnHealthReachedZero;
 
-        currentHealth -= damage;
-        Debug.Log(transform.name + " takes " + damage + " damage.");
+	public virtual void Awake() {
+		currentHealth = maxHealth.GetValue();
+	}
 
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
+	// Start with max HP.
+	public virtual void Start ()
+	{
+		
+	}
 
-    public virtual void Die ()
-    {
-        // This method is meant to be overwritten
-        Debug.Log(transform.name + " died.");
-    }
+	// Damage the character
+	public void TakeDamage (int damage)
+	{
+		// Subtract the armor value - Make sure damage doesn't go below 0.
+		damage -= armor.GetValue();
+		damage = Mathf.Clamp(damage, 0, int.MaxValue);
+
+		// Subtract damage from health
+		currentHealth -= damage;
+		Debug.Log(transform.name + " takes " + damage + " damage.");
+
+		// If we hit 0. Die.
+		if (currentHealth <= 0)
+		{
+			if (OnHealthReachedZero != null) {
+				OnHealthReachedZero ();
+			}
+		}
+	}
+
+	// Heal the character.
+	public void Heal (int amount)
+	{
+		currentHealth += amount;
+		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
+	}
+
+
+
 }

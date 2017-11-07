@@ -1,58 +1,64 @@
-﻿using System.Collections;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/* This component moves our player.
+		- If we have a focus move towards that.
+		- If we don't move to the desired point.
+*/
+
 [RequireComponent(typeof(NavMeshAgent))]
-public class PlayerMotor : MonoBehaviour
-{
-    Transform target;       // Target to follow
-    NavMeshAgent agent;     // Reference to our agent
+[RequireComponent(typeof(PlayerController))]
+public class PlayerMotor : MonoBehaviour {
 
-    private void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        StartCoroutine(UpdateDestination());
-    }
+	Transform target;
+	NavMeshAgent agent;     // Reference to our NavMeshAgent
 
-    IEnumerator UpdateDestination()
-    {
-        while (true)
-        {
-            if (target != null)
-            {
-                agent.SetDestination(target.position);
-                FaceTarget();
-            }
+	void Start ()
+	{
+		agent = GetComponent<NavMeshAgent>();
+		GetComponent<PlayerController>().onFocusChangedCallback += OnFocusChanged;
+	}
 
-            yield return new WaitForSeconds(0.2f);
-        }
-    }
+	public void MoveToPoint (Vector3 point)
+	{
+		agent.SetDestination(point);
+	}
 
-    public void MoveToPoint(Vector3 point)
-    {
-        agent.SetDestination(point);
-    }
+	void OnFocusChanged (Interactable newFocus)
+	{
+		if (newFocus != null)
+		{
+			agent.stoppingDistance = newFocus.radius*.8f;
+			agent.updateRotation = false;
 
-    public void FollowTarget (Interactable newTarget)
-    {
-        agent.stoppingDistance = newTarget.radius * 0.8f;
-        agent.updateRotation = false;
+			target = newFocus.interactionTransform;
+		}
+		else
+		{
+			agent.stoppingDistance = 0f;
+			agent.updateRotation = true;
+			target = null;
+		}
+	}
 
-        target = newTarget.interactionTransform;
-    }
+	void Update ()
+	{
+		if (target != null)
+		{
+			MoveToPoint (target.position);
+			FaceTarget ();
 
-    public void StopFollowingTarget()
-    {
-        agent.stoppingDistance = 0f;
-        agent.updateRotation = true;
+		}
+	}
 
-        target = null;
-    }
+	void FaceTarget()
+	{
+		Vector3 direction = (target.position - transform.position).normalized;
+		Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+	}
+		
 
-    void FaceTarget()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
 }
