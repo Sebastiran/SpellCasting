@@ -13,7 +13,7 @@ public class EquipmentManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("More than one instance of Iventory found!");
+            Debug.Log("More than one instance of EquipmentManager found!");
             return;
         }
         instance = this;
