@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 114805771287006498}
   - component: {fileID: 114658985731270352}
   - component: {fileID: 114555136790508838}
-  - component: {fileID: 114244067267563926}
   - component: {fileID: 120173308116432216}
   - component: {fileID: 114551057046743530}
   m_Layer: 2
@@ -1448,22 +1447,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114244067267563926
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1378388896379010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31fbbe7cad8d1134c9d1555488b6b3ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellDamage: 1
-  spellRange: 50
-  hitForce: 100
-  castPos: {fileID: 4595215152421352}
-  laserLine: {fileID: 0}
 --- !u!114 &114536092619247222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1481,6 +1464,8 @@ MonoBehaviour:
     baseValue: 5
   armor:
     baseValue: 0
+  speed:
+    baseValue: 3
 --- !u!114 &114551057046743530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1492,9 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dab5810d6d84e438cdff8354e7ec68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
   castPos: {fileID: 4595215152421352}
-  speed: 10
 --- !u!114 &114555136790508838
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1608,7 +1591,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.2
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:

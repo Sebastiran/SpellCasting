@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114054921268816774}
   - component: {fileID: 54404293843628258}
   m_Layer: 0
-  m_Name: FireBolt
+  m_Name: ProjectileCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

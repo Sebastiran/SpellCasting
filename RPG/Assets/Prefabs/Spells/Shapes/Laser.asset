@@ -9,12 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1c0535d575d0dc45893f953a9af5440, type: 3}
-  m_Name: FireLaser
+  m_Name: Laser
   m_EditorClassIdentifier: 
-  name: FireLaser
+  name: Laser
   icon: {fileID: 21300000, guid: 18e814e5172ef4f7c94dcade1d2cdc72, type: 3}
   sound: {fileID: 0}
-  manaCast: 3
+  manaCost: 1
+  components: []
+  caster: {fileID: 0}
   range: 10
   damage: 10
   hitForce: 0

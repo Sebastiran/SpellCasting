@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460b96c16a97cb847b5935a60ed9d943, type: 3}
+  m_Name: ProjectileHeal
+  m_EditorClassIdentifier: 
+  name: ProjectileSpell
+  icon: {fileID: 21300000, guid: 083fa591b8ce94432a62137ec492db83, type: 3}
+  sound: {fileID: 0}
+  manaCost: 1
+  components:
+  - {fileID: 11400000, guid: d1de6cce99204c64ba5fe9d235670580, type: 2}
+  caster: {fileID: 0}
+  speed: 10
+  spellPrefab: {fileID: 1297505681696936, guid: b2eb3ba983d824c45a1b601d2d756edd,
+    type: 2}
