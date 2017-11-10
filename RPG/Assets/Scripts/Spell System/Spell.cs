@@ -2,24 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NewSpell", menuName = "Spells/NewSpell")]
 public class Spell : ScriptableObject
 {
     new public string name = "New Name";
     public Sprite icon;
     public AudioClip sound;
-    public float manaCost = 1f;
+
+    public Shape shape;
     public Component[] components;
+    public Modifier[] modifiers;
 
-    [HideInInspector] public Transform caster;
-    protected SpellShooter shooter;
+    [HideInInspector] public CharacterStats caster;
+    [HideInInspector] public Vector3 targetPosition;
 
-    public virtual void Initialize(GameObject caster)
+    public void BeginCast(CharacterStats caster, Vector3 targetPosition)
     {
-        this.caster = caster.transform;
-        shooter = caster.GetComponent<SpellShooter>();
-    }
-    public virtual void CastSpell()
-    {
+        this.caster = caster;
+        this.targetPosition = targetPosition;
+
+        shape.BeginCast(this);
     }
 
     // TODO

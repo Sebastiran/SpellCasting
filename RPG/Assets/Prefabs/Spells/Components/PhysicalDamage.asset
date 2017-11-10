@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156182d2cc604d94698c5080f35a3bf1, type: 3}
   m_Name: PhysicalDamage
   m_EditorClassIdentifier: 
+  assemblyParticles: {fileID: 1798893220242090, guid: 81e4123f590c9f44eb04c24e9b8dc1be,
+    type: 2}

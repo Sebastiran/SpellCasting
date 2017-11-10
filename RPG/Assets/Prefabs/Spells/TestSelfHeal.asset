@@ -8,16 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460b96c16a97cb847b5935a60ed9d943, type: 3}
-  m_Name: ProjectileHeal
+  m_Script: {fileID: 11500000, guid: 131850855b425ce44b211a17f91697c0, type: 3}
+  m_Name: TestSelfHeal
   m_EditorClassIdentifier: 
-  name: ProjectileSpell
-  icon: {fileID: 21300000, guid: 083fa591b8ce94432a62137ec492db83, type: 3}
+  name: TestSelfHeal
+  icon: {fileID: 21300000, guid: 3f259d0b1962e4015b6e97c9a0a346ea, type: 3}
   sound: {fileID: 0}
-  manaCost: 1
+  shape: {fileID: 11400000, guid: c6b31dfd10d1085439602283d9963891, type: 2}
   components:
   - {fileID: 11400000, guid: d1de6cce99204c64ba5fe9d235670580, type: 2}
+  modifiers: []
   caster: {fileID: 0}
-  speed: 10
-  spellPrefab: {fileID: 1297505681696936, guid: b2eb3ba983d824c45a1b601d2d756edd,
-    type: 2}
+  targetPosition: {x: -10.215926, y: -4.1437607, z: -7.5516577}

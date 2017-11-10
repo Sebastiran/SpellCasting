@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc40ee358557f3f43a8836003ad1d8b8, type: 3}
   m_Name: MagicDamage
   m_EditorClassIdentifier: 
+  assemblyParticles: {fileID: 1515890643695614, guid: ae72ec28f1a359f42be7d2eb4db75d09,
+    type: 2}

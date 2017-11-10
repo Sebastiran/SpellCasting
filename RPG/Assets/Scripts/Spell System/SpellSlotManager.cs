@@ -92,8 +92,7 @@ public class SpellSlotManager : MonoBehaviour
     {
         return spells[Random.Range(0, spells.Length)];
     }
-
-
+    
 
     private List<T> HustleOrder<T>(List<T> list)
     {

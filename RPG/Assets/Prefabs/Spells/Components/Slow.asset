@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfa84f1ecd58b314e8f9707d4298b6b5, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
+  assemblyParticles: {fileID: 1798893220242090, guid: 088c24c9149f7954ea4138a9d886a95a,
+    type: 2}

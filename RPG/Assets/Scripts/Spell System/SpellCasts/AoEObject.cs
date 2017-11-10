@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AoE : MonoBehaviour
+public class AoEObject : MonoBehaviour
 {
-    [HideInInspector] public AoESpell spell;
+    [HideInInspector] public AoE spell;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform != spell.caster)
+        /*if (other.transform != spell.caster)
         {
             Collider[] objectsInRange = Physics.OverlapSphere(transform.position, spell.radius);
 
@@ -24,6 +24,6 @@ public class AoE : MonoBehaviour
                 }
             }
             Destroy(this.gameObject);
-        }
+        }*/
     }
 }

@@ -15,17 +15,18 @@ using UnityEngine.SceneManagement;
 		instance = this;
 	}
 
-	#endregion
+    #endregion
+    
+    public CharacterCombat playerCombatManager;
+    public PlayerStats playerStats;
 
-	void Start() {
+    void Start()
+    {
 		playerStats.OnHealthReachedZero += Die;
 	}
 
-	public CharacterCombat playerCombatManager;
-	public PlayerStats playerStats;
-
-
-	void Die() {
+	void Die()
+    {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 }

@@ -11,3 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc47287b801d74d4eb425010feec4c53, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
+  assemblyParticles: {fileID: 1515890643695614, guid: 20b7709be8d4ab24cbaebcdd736bbd5c,
+    type: 2}
+  hitParticles: {fileID: 1515890643695614, guid: 03d2087888b47684db9f5e466ac5e770,
+    type: 2}

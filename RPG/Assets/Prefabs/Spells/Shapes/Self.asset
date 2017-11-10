@@ -8,8 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b2edfe8262ac74a9f9213f24f4f32f, type: 3}
-  m_Name: Poison
+  m_Script: {fileID: 11500000, guid: ffd9f431416aadf40ac328942b4ecd3b, type: 3}
+  m_Name: Self
   m_EditorClassIdentifier: 
-  assemblyParticles: {fileID: 1798893220242090, guid: 614680fcaa170dc439adefa4eb113530,
-    type: 2}

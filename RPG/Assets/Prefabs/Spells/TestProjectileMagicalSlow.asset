@@ -8,17 +8,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460b96c16a97cb847b5935a60ed9d943, type: 3}
-  m_Name: ProjectileMagicSlow
+  m_Script: {fileID: 11500000, guid: 131850855b425ce44b211a17f91697c0, type: 3}
+  m_Name: TestProjectileMagicalSlow
   m_EditorClassIdentifier: 
-  name: ProjectileSpell
+  name: TestProjectileMagicalSlow
   icon: {fileID: 21300000, guid: 53a51e6c493114b819ff21f349149692, type: 3}
   sound: {fileID: 0}
-  manaCost: 2
+  shape: {fileID: 11400000, guid: 5eec8a190188e1144a37e4638c0b632a, type: 2}
   components:
   - {fileID: 11400000, guid: 1a359efad0fbe3146b6b9996029948f1, type: 2}
   - {fileID: 11400000, guid: 0c08dc8ea16460c4d919389eb0a589f3, type: 2}
+  modifiers: []
   caster: {fileID: 0}
-  speed: 10
-  spellPrefab: {fileID: 1297505681696936, guid: b2eb3ba983d824c45a1b601d2d756edd,
-    type: 2}
+  targetPosition: {x: 8.951044, y: -0.043544486, z: -9.294661}
